@@ -1,0 +1,87 @@
+'use strict';
+
+
+
+/**
+ * add event on element
+ */
+
+const addEventOnElem = function (elem, type, callback) {
+  if (elem.length > 1) {
+    for (let i = 0; i < elem.length; i++) {
+      elem[i].addEventListener(type, callback);
+    }
+  } else {
+    elem.addEventListener(type, callback);
+  }
+}
+
+
+
+/**
+ * navbar toggle
+ */
+
+const navbar = document.querySelector("[data-navbar]");
+const navTogglers = document.querySelectorAll("[data-nav-toggler]");
+const navLinks = document.querySelectorAll("[data-nav-link]");
+const overlay = document.querySelector("[data-overlay]");
+
+const toggleNavbar = function () {
+  navbar.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+addEventOnElem(navTogglers, "click", toggleNavbar);
+
+const closeNavbar = function () {
+  navbar.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+addEventOnElem(navLinks, "click", closeNavbar);
+
+
+
+/**
+ * header active when scroll down to 100px
+ */
+
+const header = document.querySelector("[data-header]");
+const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+const activeElem = function () {
+  if (window.scrollY > 100) {
+    header.classList.add("active");
+    backTopBtn.classList.add("active");
+  } else {
+    header.classList.remove("active");
+    backTopBtn.classList.remove("active");
+  }
+}
+
+addEventOnElem(window, "scroll", activeElem);
+
+
+// Disable right-click context menu
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+});
+
+// Disable control key (Ctrl), function keys (F1 to F12), and F12 key
+document.addEventListener('keydown', function(event) {
+  // Disable control key (Ctrl)
+  if (event.ctrlKey) {
+      event.preventDefault();
+  }
+  
+  // Disable function keys (F1 to F12)
+  if (event.key.startsWith('F') && !isNaN(parseInt(event.key.substr(1)))) {
+      event.preventDefault();
+  }
+  
+  // Disable F12 key
+  if (event.key === 'F12') {
+      event.preventDefault();
+  }
+});
