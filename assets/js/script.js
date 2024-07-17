@@ -68,20 +68,20 @@ document.addEventListener('contextmenu', function(event) {
   event.preventDefault();
 });
 
-// Disable control key (Ctrl), function keys (F1 to F12), and F12 key
-document.addEventListener('keydown', function(event) {
-  // Disable control key (Ctrl)
-  if (event.ctrlKey) {
-      event.preventDefault();
-  }
+// // Disable control key (Ctrl), function keys (F1 to F12), and F12 key
+// document.addEventListener('keydown', function(event) {
+//   // Disable control key (Ctrl)
+//   if (event.ctrlKey) {
+//       event.preventDefault();
+//   }
   
-  // Disable function keys (F1 to F12)
-  if (event.key.startsWith('F') && !isNaN(parseInt(event.key.substr(1)))) {
-      event.preventDefault();
-  }
+//   // Disable function keys (F1 to F12)
+//   if (event.key.startsWith('F') && !isNaN(parseInt(event.key.substr(1)))) {
+//       event.preventDefault();
+//   }
   
-  // Disable F12 key
-  if (event.key === 'F12') {
-      event.preventDefault();
-  }
-});
+//   // Disable F12 key
+//   if (event.key === 'F12') {
+//       event.preventDefault();
+//   }
+// });
